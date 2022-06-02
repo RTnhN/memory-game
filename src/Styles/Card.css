@@ -1,0 +1,13 @@
+#cardsContainer>div{
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 2rem;
+}
+#cardsContainer>div>p{
+font-size: 2rem;
+}

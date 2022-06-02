@@ -8,6 +8,7 @@ function App() {
   const maxLetters = 9;
   const alpha = Array.from(Array(26)).map((e, i) => i + 65);
   const alphabet = alpha.map((x) => String.fromCharCode(x));
+  const [menuOpen, setMenuOpen] = useState(false);
   const [state, setState] = useState({
     'score':0,
     'lettersCount': startingLettersCount,
@@ -18,7 +19,9 @@ function App() {
     'remainingLetters': alphabet.slice(0,startingLettersCount),
     'sampledLetters': _.sampleSize(alphabet.slice(0,startingLettersCount), maxLetters)
   });
-
+  function toggleMenu(event){
+    setMenuOpen(!menuOpen);
+  }
   function letterClicked(event){
     if (event.target === event.currentTarget) return
     const targetLetter = event.target.nodeName === "P" ? event.target.parentElement.id : event.target.id;
@@ -74,7 +77,8 @@ function App() {
   return (
     <div id="App">
       <div id='header'>
-        <p id='description'>See how many stages you can complete. After a stage, the counter is reset, and the next letter in the alphabet is added to the possible letters while keeping the same number of letters on the screen. </p>
+        <button className='material-symbols-outlined' onClick={toggleMenu}>info</button>
+        {menuOpen && <p id='description'>Tap or click unique letters for the stage. See how many stages you can complete. The stage is complete when all possible letters are clicked. At the end of the stage, the counter is reset, and the next letter in the alphabet is added to the possible letters while keeping the same number of letters on the screen. </p>}
         <h1 id='gameTitle'>Memory</h1>
         <p id='score'>{`Score: ${state.score}/${state.lettersCount}`}</p>
         <p id='stage'>{`Stage: ${state.stage}`}</p>

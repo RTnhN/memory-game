@@ -73,4 +73,15 @@
   grid-template-rows: repeat(3, 1fr);
   column-gap: 1rem;
   row-gap: 1rem;
+  border-radius: 2rem;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.win{
+  background-color: #71ff71;
+  transition: background-color 0.5s ease-in-out;
+}
+.lose{
+  background-color: #ff0000;
+  transition: background-color 0.5s ease-in-out;;
 }

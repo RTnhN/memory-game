@@ -19,6 +19,7 @@ function App() {
     'remainingLetters': alphabet.slice(0,startingLettersCount),
     'sampledLetters': _.sampleSize(alphabet.slice(0,startingLettersCount), maxLetters)
   });
+  const [stageCategory, setStageCategory] = useState("");
   function toggleMenu(event){
     setMenuOpen(!menuOpen);
   }
@@ -27,6 +28,7 @@ function App() {
     const targetLetter = event.target.nodeName === "P" ? event.target.parentElement.id : event.target.id;
 
     if (state.clickedLetters.includes(targetLetter)){
+      setStageCategory("lose");
       setState(prevState => ({
         ...prevState,
          'score':0,
@@ -37,8 +39,12 @@ function App() {
          'remainingLetters': alphabet.slice(0,startingLettersCount),
          'sampledLetters': _.sampleSize(alphabet.slice(0,startingLettersCount), maxLetters)
          }));
+         setTimeout(() => {
+          setStageCategory("");
+        }, 500);   
     } else {
       if (state.score >= state.lettersCount-1){
+        setStageCategory("win");
         setState(prevState => ({
           ...prevState,
            'score':0,
@@ -50,6 +56,9 @@ function App() {
            'remainingLetters': alphabet.slice(0,prevState.lettersCount+1),
            'sampledLetters': _.sampleSize(alphabet.slice(0,prevState.lettersCount+1), maxLetters)
            }));
+        setTimeout(() => {
+          setStageCategory("");
+        }, 500);   
       } else {
         setState(prevState => {
           const score = prevState.score+1;
@@ -84,7 +93,7 @@ function App() {
         <p id='stage'>{`Stage: ${state.stage}`}</p>
         <p id='bestStage'>{`Best Stage: ${state.bestStage}`}</p>
       </div>
-      <div id='cardsContainer' onClick={letterClicked}>
+      <div id='cardsContainer' onClick={letterClicked} className={stageCategory}>
       {state.sampledLetters.map(letterElement => <Card key={letterElement} id={letterElement} letter={letterElement} />)}
       </div>
     </div>

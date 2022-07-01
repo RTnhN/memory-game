@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import Card from './components/Card';
 import './Styles/App.css';
-import _ from 'lodash';
+import { sampleSize } from 'lodash';
 
 function App() {
   const startingLettersCount = 9;
@@ -17,7 +17,7 @@ function App() {
     'activeLetters': alphabet.slice(0,startingLettersCount),
     'clickedLetters': [],
     'remainingLetters': alphabet.slice(0,startingLettersCount),
-    'sampledLetters': _.sampleSize(alphabet.slice(0,startingLettersCount), maxLetters)
+    'sampledLetters': sampleSize(alphabet.slice(0,startingLettersCount), maxLetters)
   });
   const [stageCategory, setStageCategory] = useState("");
   function toggleMenu(event){
@@ -37,7 +37,7 @@ function App() {
          'clickedLetters':[],
          'activeLetters': alphabet.slice(0,startingLettersCount),
          'remainingLetters': alphabet.slice(0,startingLettersCount),
-         'sampledLetters': _.sampleSize(alphabet.slice(0,startingLettersCount), maxLetters)
+         'sampledLetters': sampleSize(alphabet.slice(0,startingLettersCount), maxLetters)
          }));
          setTimeout(() => {
           setStageCategory("");
@@ -54,7 +54,7 @@ function App() {
            'clickedLetters':[],
            'activeLetters': alphabet.slice(0,prevState.lettersCount+1),
            'remainingLetters': alphabet.slice(0,prevState.lettersCount+1),
-           'sampledLetters': _.sampleSize(alphabet.slice(0,prevState.lettersCount+1), maxLetters)
+           'sampledLetters': sampleSize(alphabet.slice(0,prevState.lettersCount+1), maxLetters)
            }));
         setTimeout(() => {
           setStageCategory("");
@@ -68,9 +68,9 @@ function App() {
           if (remainingLetters.length >= maxLetters){
             targetArray = remainingLetters;
           } else {
-            targetArray = remainingLetters.concat(_.sampleSize(clickedLetters, maxLetters-remainingLetters.length)) 
+            targetArray = remainingLetters.concat(sampleSize(clickedLetters, maxLetters-remainingLetters.length)) 
           }
-          const sampledLetters = _.sampleSize(targetArray, maxLetters)
+          const sampledLetters = sampleSize(targetArray, maxLetters)
           
           return {
           ...prevState,

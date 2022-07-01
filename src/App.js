@@ -8,12 +8,14 @@ function App() {
   const maxLetters = 9;
   const alpha = Array.from(Array(26)).map((e, i) => i + 65);
   const alphabet = alpha.map((x) => String.fromCharCode(x));
+  const bestStage = localStorage.getItem("memoryGameBestStage") === null ?
+                    0 : localStorage.getItem("memoryGameBestStage")
   const [menuOpen, setMenuOpen] = useState(false);
   const [state, setState] = useState({
     'score':0,
     'lettersCount': startingLettersCount,
     'stage':1,
-    'bestStage':1,
+    'bestStage':bestStage,
     'activeLetters': alphabet.slice(0,startingLettersCount),
     'clickedLetters': [],
     'remainingLetters': alphabet.slice(0,startingLettersCount),
@@ -45,6 +47,7 @@ function App() {
     } else {
       if (state.score >= state.lettersCount-1){
         setStageCategory("win");
+        localStorage.setItem("memoryGameBestStage", state.stage)
         setState(prevState => ({
           ...prevState,
            'score':0,

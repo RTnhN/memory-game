@@ -22,11 +22,10 @@
   margin-top: 1rem;
   display: grid;
   grid-template-columns:  1fr 2fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-template-areas: 
-  'description title score'
-  'description title stage'
-  'description title bestStage';
+  'description title .'
+  'statsContainer statsContainer statsContainer';
   column-gap: 1rem;
 }
 
@@ -55,14 +54,16 @@
   justify-self: center;
   font-size: 2.5rem;
 }
-#score{
-  grid-area: score;
+#statsContainer{
+  grid-area: statsContainer;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
-#stage{
-  grid-area: stage;
-}
-#bestStage{
-  grid-area: bestStage;
+#statsContainer>p{
+  font-size: .75rem;
 }
 
 #cardsContainer{

@@ -89,9 +89,11 @@ function App() {
         <button className='material-symbols-outlined' onClick={toggleMenu}>info</button>
         {menuOpen && <p id='description'>Tap or click unique letters for the stage. See how many stages you can complete. The stage is complete when all possible letters are clicked. At the end of the stage, the counter is reset, and the next letter in the alphabet is added to the possible letters while keeping the same number of letters on the screen. </p>}
         <h1 id='gameTitle'>Memory</h1>
+        <div id="statsContainer">
         <p id='score'>{`Score: ${state.score}/${state.lettersCount}`}</p>
         <p id='stage'>{`Stage: ${state.stage}`}</p>
         <p id='bestStage'>{`Best Stage: ${state.bestStage}`}</p>
+        </div>
       </div>
       <div id='cardsContainer' onClick={letterClicked} className={stageCategory}>
       {state.sampledLetters.map(letterElement => <Card key={letterElement} id={letterElement} letter={letterElement} />)}

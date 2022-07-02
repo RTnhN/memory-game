@@ -2,6 +2,7 @@ import {useState} from 'react';
 import Card from './components/Card';
 import './Styles/App.css';
 import { sampleSize } from 'lodash';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 function App() {
   const startingLettersCount = 9;
@@ -89,7 +90,7 @@ function App() {
   return (
     <div id="App">
       <div id='header'>
-        <button className='material-symbols-outlined' onClick={toggleMenu}>info</button>
+        <button onClick={toggleMenu}><InfoOutlinedIcon/></button>
         {menuOpen && <p id='description'>Tap or click unique letters for the stage. See how many stages you can complete. The stage is complete when all possible letters are clicked. At the end of the stage, the counter is reset, and the next letter in the alphabet is added to the possible letters while keeping the same number of letters on the screen. </p>}
         <h1 id='gameTitle'>DREAD</h1>
         <div id="statsContainer">

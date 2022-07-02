@@ -46,6 +46,7 @@
   border: none;
   cursor: pointer;
 }
+
 #header>button:hover{
   color: #ff0000;
 }
@@ -53,7 +54,7 @@
 #description{
   position: absolute;
   width: min(80vw, 12rem);
-  top:100px;
+  top:20vh;
   background: white;
   border: 1px solid black;
   padding: 1em;
@@ -109,6 +110,10 @@
   /* #App{
     padding-bottom: 5rem;
   } */
+  #description{
+    top:30vh;
+  }
+  
 
 
   
